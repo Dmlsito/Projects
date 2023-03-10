@@ -1,0 +1,25 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;  
+}
+.app{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+
+}
+.container-principal-info{
+    background: #161935;
+   
+    height: 100vh;
+    width: 25%;
+    flex-grow: 1;
+}
+.container-secondary-info{
+    background: #001;
+    width: 75%;
+    height: 100vh;
+    flex-grow: 1;
+    
+}
