@@ -11,12 +11,24 @@
 <body>
     <div class = "app">
         <div class = "principal-info-weather-data">
+            <div class = "principal-info-weather-data__info">
+               <button class = "principal-info-weather-data__info-btnSearch">Search for places</button>
+               <div class = "principal-info-weather-data__info-containerImg">
+                <img src = "images/Clear.png">
+               </div>
+               <p id = "temperature">15oC</p>
+               <p id = "data-weather">Shower</p>
+               <p id = "date">Today  . Fri.5 Jun</p>
+               <p id = "location"> <i class= "fa-solid fa-location-dot"></i>Helsinki</p>
+
+            </div>
             <div class = "principal-info-weather-data__search">
                 <i class = "fa-solid fa-xmark principal-info-weather-data__search__icon"></i>
-                <input type = "text" placeholder = "search location">
-                <button>Search</button>
+                <input type = "text" placeholder = "search location" id = "searchInput">
+                <button id = "mainButton">Search</button>
             </div>
         </div>
+      
         
         <div class = "container-secondary-info">
             <div class = "time-cards-container">
