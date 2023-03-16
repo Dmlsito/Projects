@@ -5,7 +5,7 @@ const btnSearch = document.querySelector(".principal-info-weather-data__info-btn
 const searhInput = document.getElementById("searchInput");
 const mainBtnSearch = document.getElementById("mainButton")
 const btnLocation = document.querySelector(".principal-info-weather-data__info-button");
-
+const listContainersCards = document.querySelectorAll(".time-cards-container__card");
 const time = Date.now();
 const timeDate = new Date(time);
 
@@ -22,6 +22,7 @@ const showLocationInfo = () => {
   
   //If our navigator is a navigator who has geolocation, do this -> 
   const onUbication =  ubication => {
+    
     fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${ubication.coords.latitude}&lon=${ubication.coords.longitude}&units=metric&appid=9a81ed26c2118da6383448260eeacebe`)
      .then(res => res.json())
      .then(res => {
@@ -49,6 +50,9 @@ const showLocationInfo = () => {
 }
 
 const showInfo = (data, dataNameCity) => {
+
+  let index = 0;
+  
   if(data.current.weather[0].main === "Rain" && data.current.weather[0].description === "light rain"){
     document.getElementById(".principal-info-weather-data__info").src = "images/LightRain.png"
   }
@@ -91,19 +95,17 @@ const showInfo = (data, dataNameCity) => {
   document.getElementById("date").innerHTML = `Today  ·  <span>${timeDate.toDateString()}</span>`;
   document.getElementById("location").innerHTML = `<i class= "fa-solid fa-location-dot"></i>${dataNameCity[0].name}`
   
-  for(let i = 0; i<= 4; i++){
-    let imagen;
-
-    document.querySelector(".time-cards-container").innerHTML += `
-    <div class = "time-cards-container__card">
-    <p id = "secondary-date">Fechaaa</p>
-    <div class = "time-cards-container__card-containerImg">
-        <img src = "images/Broken clouds.png" id = "secondary-weather-image">
-    </div>
-    <p id = "secondary-tempe">${Math.trunc(data.daily[i].temp.min)} °C</p>
-    </div>`
+  listContainersCards.forEach(card => {
+    
+    card.innerHTML = `<p id = "secondary-date">Tomorrow</p>
+      <div class = "time-cards-container__card-containerImg">
+          <img src = "images/Broken clouds.png" id = "secondary-weather-image">
+      </div>
+      <p id = "secondary-tempe">${Math.trunc(data.daily[index].temp.min)} °C</p>
+      `
+      index++;
+    })
   }
-}
 
 //Method to get the data
 const getData = () => {
@@ -136,7 +138,7 @@ const getData = () => {
       }) 
     })
 }
-
+//First of all we call this method to show our weather data location
 showLocationInfo();
 
 closeIconSearch.addEventListener("click", () => {
