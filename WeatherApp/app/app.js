@@ -9,11 +9,7 @@ const listContainersCards = document.querySelectorAll(".time-cards-container__ca
 const time = Date.now();
 const timeDate = new Date(time);
 
-const secondaryData = [
-  document.getElementById("secondary-date"),
-  document.getElementById("secondary-weather-image"),
-  document.getElementById("secondary-temp")
-]
+
 const showLocationInfo = () => {
 
   if(!"geolocation" in navigator){
@@ -26,11 +22,14 @@ const showLocationInfo = () => {
     fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${ubication.coords.latitude}&lon=${ubication.coords.longitude}&units=metric&appid=9a81ed26c2118da6383448260eeacebe`)
      .then(res => res.json())
      .then(res => {
+      console.log(res)
       const locationWeatherData = res;
       fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${ubication.coords.latitude}&lon=${ubication.coords.longitude}&appid=9a81ed26c2118da6383448260eeacebe`)
       .then(res => res.json())
       .then(res => {
-        showInfo(locationWeatherData, res)
+        showMainInfo(locationWeatherData, res)
+        showSecondaryInfo(locationWeatherData);
+        showHighlights(locationWeatherData);
       })
     })
     }
@@ -49,9 +48,8 @@ const showLocationInfo = () => {
   
 }
 
-const showInfo = (data, dataNameCity) => {
-
-  let index = 0;
+//Method to show the principal 's info
+const showMainInfo = (data, dataNameCity) => {
   
   if(data.current.weather[0].main === "Rain" && data.current.weather[0].description === "light rain"){
     document.getElementById(".principal-info-weather-data__info").src = "images/LightRain.png"
@@ -78,7 +76,7 @@ const showInfo = (data, dataNameCity) => {
     document.getElementById("weather-image").src = "images/HeavyCloud.png"
   }
   if(data.current.weather[0].main === "Clouds" && data.current.weather[0].description === "broken clouds"){
-    document.getElementById("weather-image").src = "images/Broken clouds.png"
+    document.getElementById("weather-image").src = "images/BrokenClouds.png"
   }
   if(data.current.weather[0].main === "Clear"){
     document.getElementById("weather-image").src = "images/Clear.png"
@@ -95,16 +93,90 @@ const showInfo = (data, dataNameCity) => {
   document.getElementById("date").innerHTML = `Today  ·  <span>${timeDate.toDateString()}</span>`;
   document.getElementById("location").innerHTML = `<i class= "fa-solid fa-location-dot"></i>${dataNameCity[0].name}`
   
+ }
+ 
+ //Method to show secondary's info weather
+ const showSecondaryInfo = (data) => {
+
+  let index = 0;
+
   listContainersCards.forEach(card => {
-    
-    card.innerHTML = `<p id = "secondary-date">Tomorrow</p>
+    let image;
+    let date;
+
+    if(data.daily[index].weather[0].main === "Rain" && data.daily[index].weather[0].description === "light rain"){
+      image = "images/LightRain.png"
+    }
+    if(data.daily[index].weather[0].main === "Rain"){
+      image = "images/ModerateRain.png"
+    }
+    if(data.daily[index].weather[0].main === "Rain" && data.daily[index].weather[0].description === "very heavy rain"){
+      image = "images/HeavyRain.png";
+    }
+    if(data.daily[index].weather[0].main === "Rain" && data.daily[index].weather[0].description === "freezing rain") {
+      image = "images/Sleet.png"
+    }
+    if(data.daily[index].weather[0].main === "Snow") {
+      image = "images/Snow.png";
+    }
+    if(data.daily[index].weather[0].main === "Clouds" && data.daily[index].weather[0].description === "few clouds"){
+      image = "images/LightCloud.png"
+    }
+    if(data.daily[index].weather[0].main === "Clouds" && data.daily[index].weather[0].description === "scattered clouds"){
+      image = "images/scattered.png";
+    }
+    if(data.daily[index].weather[0].main === "Clouds" && data.daily[index].weather[0].description === "overcast clouds"){
+      image = "images/HeavyCloud.png";
+    }
+    if(data.daily[index].weather[0].main === "Clouds" && data.daily[index].weather[0].description === "broken clouds") {
+      image = "images/BrokenClouds.png";
+    }
+    if(data.daily[index].weather[0].main === "Clear"){
+      image = "images/Clear.png";
+    }
+    if(data.daily[index].weather[0].main === "Mist"){
+      image = "images/mist.png"
+    }
+    if(data.daily[index].weather[0].main === "Thunderstorm") {
+      image = "images/Thunderstorm.png"
+    }
+
+    if(index === 0)
+    date = "Tomorrow"
+
+    if(index > 0) {
+      let weekInMilliseconds = 1000 * 60 * 60 * 24 * index;
+      let suma = timeDate.getTime() + weekInMilliseconds;
+      let dateUpdated = new Date(suma);
+      date = dateUpdated;
+      console.log(date)
+      date = (date.toString()).substring(0, 3) + " " + (date.toString()).substring(8, 15)
+    }
+
+    card.innerHTML = `<p id = "secondary-date">${date}</p>
       <div class = "time-cards-container__card-containerImg">
-          <img src = "images/Broken clouds.png" id = "secondary-weather-image">
+          <img src = ${image} id = "secondary-weather-image" title = "hola">
       </div>
-      <p id = "secondary-tempe">${Math.trunc(data.daily[index].temp.min)} °C</p>
+      <p id = "secondary-temp"><span>${Math.trunc(data.daily[index].temp.max)}</span><span>${Math.trunc(data.daily[index].temp.min)} °C</span> </p>
       `
       index++;
     })
+ }
+ 
+ //Method to show the highlights's day
+ const showHighlights = (data) => {
+  
+  let windDirection;
+  if((data.current.wind_deg >= 0 && data.current.wind_deg <= 60) || (data.current.wind_deg <= 360 && data.current.wind_deg >= 300))
+  windDirection = "N"
+  if((data.current.wind_deg >= 60 && data.current.wind_deg <= 90))
+  windDirection = "E"
+  
+  document.querySelector(".hightlights-container-master__information1-wind").innerHTML = 
+  ` <p class = "hightlights-container-master__information1-wind__title">Wind status</p>
+  <p id = "wind-velocity">${Math.trunc(data.current.wind_speed)}<span id = "wind-velocity-magnitude">mph</span></p>
+  <p id = "wind-direction">${windDirection}</p> `
+
   }
 
 //Method to get the data
@@ -126,14 +198,15 @@ const getData = () => {
      fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=9a81ed26c2118da6383448260eeacebe`)
      .then(res => res.json())
      .then(res => {
-      console.log(res)
       const infoWeather = res;
       
       fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&appid=9a81ed26c2118da6383448260eeacebe`)
       .then(res => res.json())
       .then(res => {
-        
-         showInfo(infoWeather, res)
+         showMainInfo(infoWeather, res)
+         showSecondaryInfo(infoWeather)
+         showHighlights(infoWeather);
+
       })
       }) 
     })

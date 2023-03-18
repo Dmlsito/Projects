@@ -13,7 +13,7 @@
     background: #161935;
     height: 100vh;
     flex-grow: 1;
-    display: flex;
+    display: none;
     justify-content: space-evenly;
     transition: 0.5s all;
     
@@ -61,7 +61,7 @@
     justify-content: space-evenly;
 }
 .principal-info-weather-data__info{
-    display: none;
+    display: flex;
     height: 100vh;
     width: 100%;
     background: #161935;
@@ -140,6 +140,25 @@
     margin-top: 20px;
     font-size: 18px;
 }
+
+#secondary-date{
+    color: #fff;
+    font-size: large;
+    opacity: 0.7;
+    font-size: 20px;
+    
+   
+}
+#secondary-temp{
+    color: #fff;
+    font-size: large;
+    opacity: 0.7;
+    
+}
+p span { 
+    padding: 15px;
+    font-size: 20px;
+}
 p i {
     padding-right: 5px;
 }
@@ -197,12 +216,33 @@ h2{
     width: 400px;
     flex-grow: 1;
     margin-right: 40px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.hightlights-container-master__information1-wind__title{
+   color: #fff;
+   font-size: 25px;
+}
+#wind-velocity{
+    color: #fff;
+    font-size: 80px;
+}
+
+#wind-direction{
+    color: #fff;
+    font-size: 25px;
+}
+#wind-velocity-magnitude{
+    font-size: 30px;
 }
 .hightlights-container-master__information1-humidity{
     background: #161935;
     height: 250px;
     width: 400px;
     flex-grow: 1;
+    display: flex;
 }
 .hightlights-container-master__information2{
     width: 100%;
@@ -216,6 +256,7 @@ h2{
     width: 400px;
     flex-grow: 1;
     margin-right: 40px;
+    display: flex;
 }
 .hightlights-container-master__information2-airPresure{
     margin-top: 40px;
@@ -223,6 +264,7 @@ h2{
     height: 180px;
     width: 400px;
     flex-grow: 1;
+    display: flex;
 }
 
 
