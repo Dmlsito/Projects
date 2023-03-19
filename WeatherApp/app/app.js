@@ -182,10 +182,18 @@ const showMainInfo = (data, dataNameCity) => {
 
   document.querySelector(".hightlights-container-master__information1-wind").innerHTML = 
   ` <p class = "hightlights-container-master__information1-wind__title">Wind status</p>
-  <p id = "wind-velocity">${Math.trunc(data.current.wind_speed)}<span id = "wind-velocity-magnitude">mph</span></p>
+  <p id = "wind-velocity">${Math.trunc(data.current.wind_speed)}mph</p>
   <p id = "wind-direction">${windDirection}</p> `
 
+  document.querySelector(".hightlights-container-master__information1-humidity").innerHTML =  ` <p class = "hightlights-container-master__information1-wind__title">Humidity</p>
+  <p id = "humidity-value">${data.current.humidity}%</p>
+  <progress id = "progrees-bar" max = "100" value = "${data.current.humidity}"></progress> `
+
   }
+
+  
+
+
 
 //Method to get the data
 const getData = () => {
