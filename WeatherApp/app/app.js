@@ -167,11 +167,19 @@ const showMainInfo = (data, dataNameCity) => {
  const showHighlights = (data) => {
   
   let windDirection;
+
   if((data.current.wind_deg >= 0 && data.current.wind_deg <= 60) || (data.current.wind_deg <= 360 && data.current.wind_deg >= 300))
   windDirection = "N"
   if((data.current.wind_deg >= 60 && data.current.wind_deg <= 90))
   windDirection = "E"
-  
+  if(data.current.wind_deg === 45)
+  windDirection = "NE"
+  if(data.current.wind_deg === 180) {
+    windDirection = "S"
+  }
+  if(data.current.wind_deg === 270)
+  windDirection = "O"
+
   document.querySelector(".hightlights-container-master__information1-wind").innerHTML = 
   ` <p class = "hightlights-container-master__information1-wind__title">Wind status</p>
   <p id = "wind-velocity">${Math.trunc(data.current.wind_speed)}<span id = "wind-velocity-magnitude">mph</span></p>
