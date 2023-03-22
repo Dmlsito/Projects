@@ -189,11 +189,16 @@ const showMainInfo = (data, dataNameCity) => {
   <p id = "humidity-value">${data.current.humidity}%</p>
   <progress id = "progrees-bar" max = "100" value = "${data.current.humidity}"></progress> `
 
-  }
+  document.querySelector(".hightlights-container-master__information2-visibility").innerHTML =  
+  `<p class = "hightlights-container-master__information1-wind__title">Visibility</p>
+  <p id = "visibility-value">${Math.trunc((data.current.visibility) / 1609)} miles </p>
+  `
 
-  
-
-
+  document.querySelector(".hightlights-container-master__information2-airPresure").innerHTML =  
+  `<p class = "hightlights-container-master__information1-wind__title">Air Pressure</p>
+  <p id = "air-pressure-value">${data.current.pressure} mb</p>
+  `
+}
 
 //Method to get the data
 const getData = () => {
