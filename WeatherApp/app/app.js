@@ -42,9 +42,9 @@ const showLocationInfo = () => {
     enableHighAccuracy: true, // Maximun accuracy
     maximunAge: 0, // NO CACHE
     timeout: 5000, // Timeout -> 5000 ms
-  }
   
-  navigator.geolocation.getCurrentPosition(onUbication, onError, options);
+    } 
+     navigator.geolocation.getCurrentPosition(onUbication, onError, options);
   
 }
 
