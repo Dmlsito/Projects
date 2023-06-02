@@ -3,18 +3,19 @@ import { Header } from './Header'
 import { Product } from './Product'
 import { products as productJson} from '../mocks/products.json'
 import { useState } from 'react'
-import { useFilters } from '../hooks/useFilters'
+import { useFilters } from '../hooks/filters'
 
 function App() {
 
-  //const [products, setProducts] = useState(productJson)
+  const [products] = useState(productJson)
 
-  const { filterProducts } = useFilters()
-  const filteredProducts = filterProducts(productJson)
+  const { filterProducts, filters, setFilters} = useFilters()
+  
+  const filteredProducts = filterProducts(products)
 
   return (
       <main className='main'>
-          <Header />
+          <Header setFilters={setFilters} filters={filters}/>
           <Product products={filteredProducts}/>
         </main>
  )

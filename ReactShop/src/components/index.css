@@ -2,5 +2,39 @@
   margin: 0;
   padding: 0;
   box-sizing: border;
-  background: #242424;
+  background-color: #242424;
+}
+
+
+#root {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: .5s ease;
+  padding: .5rem;
+  border-radius: 8px;
+}
+button * {
+  background: none;
+  color: #fff;
+}
+button:hover {
+  
+  background: #646cff;
 }
