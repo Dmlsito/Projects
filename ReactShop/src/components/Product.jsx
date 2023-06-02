@@ -1,4 +1,4 @@
-
+import './Product.css'
 export function Product ({ products }) {
     console.log(products)
     return (

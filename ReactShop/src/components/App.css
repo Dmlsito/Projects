@@ -2,8 +2,8 @@
   width: 100vw;
   height: 30vh;
   display: flex;
-  justify-content: center;
+  gap: 5rem;
   align-items: center;
   flex-direction: column;
-  gap: 300px
+
 } 
