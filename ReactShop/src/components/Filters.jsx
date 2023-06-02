@@ -1,5 +1,5 @@
 import { useId } from 'react'
-
+import './Filters.css'
 
 // eslint-disable-next-line react/prop-types
 export function Filters ({setFilters, filters}) {
@@ -26,11 +26,11 @@ export function Filters ({setFilters, filters}) {
     }
 
     return (
-        <main>
-            <div>
+        <main className='main-filters'>
+            <div className='main-filters-price'>
                 <input type="range" id={priceId} min={100} max='1000' value={filters.minPrice} onChange={handleChangeMinPrice} />
                 <label htmlFor={priceId} />
-                <span>MinPrice: {filters.minPrice}</span>
+                <span>MinPrice: {filters.minPrice}$</span>
             </div>
             <div>
                 <label htmlFor={filtersId} />

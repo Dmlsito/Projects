@@ -16,7 +16,6 @@ export function Product ({products}) {
                     </li>
 
                   })
-                
                 }
             </ul>
         </main>
