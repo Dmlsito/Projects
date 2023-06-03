@@ -1,11 +1,14 @@
 import { useId } from 'react'
 import './Filters.css'
+import { useFilters } from '../hooks/filters'
 
 // eslint-disable-next-line react/prop-types
-export function Filters ({setFilters, filters}) {
+export function Filters () {
 
     const priceId = useId()
     const filtersId = useId()
+
+    const { setFilters, filters } = useFilters()
 
     const handleSelectCategory = e => {
         setFilters(prevResult => {
@@ -35,7 +38,7 @@ export function Filters ({setFilters, filters}) {
             <div>
                 <label htmlFor={filtersId} />
                 <select id={filtersId} onChange={handleSelectCategory}>
-                    <option value='all'>All</option>
+                    <option value='all'>all</option>
                     <option value='laptops'>Laptops</option>
                     <option value='smartphones'>Smartphones</option>
                 </select>

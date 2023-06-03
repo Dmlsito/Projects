@@ -4,20 +4,24 @@ import { Product } from './Product'
 import { products as productJson} from '../mocks/products.json'
 import { useState } from 'react'
 import { useFilters } from '../hooks/filters'
-
+import { Cart } from './Cart'
+import { CartProvider } from '../context/contextCart'
 function App() {
 
   const [products] = useState(productJson)
 
-  const { filterProducts, filters, setFilters} = useFilters()
+  const { filterProducts } = useFilters()
   
   const filteredProducts = filterProducts(products)
 
   return (
       <main className='main'>
-          <Header setFilters={setFilters} filters={filters}/>
-          <Product products={filteredProducts}/>
-        </main>
+          <CartProvider>
+              <Cart />
+              <Header />
+              <Product products={filteredProducts}/>
+          </CartProvider>
+      </main>
  )
 }
 
