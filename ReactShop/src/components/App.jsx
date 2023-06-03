@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { useFilters } from '../hooks/filters'
 import { Cart } from './Cart'
 import { CartProvider } from '../context/contextCart'
+
 function App() {
 
   const [products] = useState(productJson)
