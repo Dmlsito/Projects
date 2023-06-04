@@ -26,7 +26,7 @@ export function Cart () {
                                 <img src={product.thumbnail} alt={product.title} />
                                 <small>Qti: {product.quantity}</small>
                                 <div>
-                                    <small>{product.price}</small>
+                                    <small>{product.price}$</small>
                                     <button><RemoveFromCartIcon /></button>
                                 </div>
                             </li>
