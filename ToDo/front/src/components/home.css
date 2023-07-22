@@ -1,0 +1,65 @@
+.provisional {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+}
+.provisional h1 {
+    color: brown;
+}
+.main {
+    padding: .5rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 25rem;
+    gap: .5rem;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 50rem;
+}
+
+.main-article {
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;  
+    height: 100%; 
+}
+
+.main-article-dateContainer {
+    border: 2px solid brown;
+    border-radius: 8px;
+    height: 3.5rem;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-article-input {
+    height: 100%;
+    height: 100%;
+}
+.main-article-input textarea {
+    outline: 2px solid green;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    resize: none;
+}
+
+.main-aside{
+    border-radius: 8px;
+    border: 2px solid #fff;
+    width: 18rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
