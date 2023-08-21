@@ -33,7 +33,7 @@
 }
 
 .main-article-dateContainer {
-    border: 2px solid brown;
+    border: 4px solid #7E4A1B;
     border-radius: 8px;
     height: 3.5rem;
     display: flex;
@@ -47,7 +47,7 @@
     height: 100%;
 }
 .main-article-input textarea {
-    outline: 2px solid green;
+    outline: 4px solid green;
     width: 100%;
     height: 100%;
     border-radius: 8px;
@@ -64,15 +64,24 @@
 
 .main-aside{
     border-radius: 8px;
-    border: 2px solid #fff;
+    border: 4px solid #fff;
     width: 18rem;
     height: 100%;
     display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    align-items: center;
+    gap: 1.5rem;
+    flex-direction: column;   
 }
 
 .main-aside-containerNotes {
-    border: 2px solid red;
+    align-self: center;
+    border-bottom: 4px solid rgba(0, 100, 0, .7);
+    width: 90%;
+    text-align: center;
+}
+
+.main-aside-title {
+    background: #fff;
+    width: 100%;
+    text-align: center;
+    align-self: center;
 }

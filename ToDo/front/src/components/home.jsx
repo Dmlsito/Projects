@@ -40,9 +40,7 @@ const home = () => {
                 </main>
 
                 <aside className='main-aside'>
-                    <h2>Today's notes</h2>
-
-                   
+                    <h2 className='main-aside-title'>Today's notes</h2>
 
                     { existInfo && 
                         <div className='main-aside-containerNotes'>
@@ -52,7 +50,6 @@ const home = () => {
                       }</div>
                     }
                   
-
                 </aside>
                 
             </div>
