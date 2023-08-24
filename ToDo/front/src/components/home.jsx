@@ -1,7 +1,7 @@
 import './home.css'
 import { useState, useEffect, useRef} from 'react'
 
-const home = () => {
+const Home = () => {
 
     const [textAreaInfo, setTextAreaInfo] = useState(new Array())
     const [existInfo, setExistInfo] = useState(false)
@@ -58,4 +58,4 @@ const home = () => {
     )
 }
 
-export default home
+export default Home
