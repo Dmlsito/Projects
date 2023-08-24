@@ -2,65 +2,81 @@ import './Login.css'
 import { useRef, useState } from 'react'
 
 const Form = ({navigate}) => {
-
-    const [username, setUsername] = useState(null)
-    const [password, setPassword] = useState(null)
-
+ 
+    const [user, setUser] = useState({username: '', password: ''})
     const [errorLogin, setErrorLogin] = useState(null)
     const [showErrors, setShowErrors] = useState(false)
     const [userRegister, setUserRegister] = useState(null)
-  
-    const checkUser =  async () => {
+    
+    const getUsername = (e) => {
 
-        console.log(errorLogin)
-        let user = {'username': username, 'password': password}
-        const error = await fetch("http://localhost:8080/api/v1/user/checkUser", {
+        setUser( info => {
+            return {
+                username: e.target.value,
+                password: info.password
+            }
+        })
+
+    }
+
+    const getPassword = (e) => {
+
+        setUser( info => {
+            return {
+                username: info.username,
+                password: e.target.value
+            }
+        })
+
+    }
+  
+    const sigIn = async (e) => {
+
+        e.preventDefault()
+
+        let userToCheck = {'username': user.username, 'password': user.password}
+        
+        const error =  fetch("http://localhost:8080/api/v1/user/checkUser", {
             method: "POST",   
-            body: JSON.stringify(user),
+            body: JSON.stringify(userToCheck),
             headers: {
           'Content-Type': 'application/json',
         },
       }).then(res => res.json())
       .then(res => {
-        if(res === 1) {
-            navigate('/home')
-        }
-        else {
-            console.log('usuario erroneo')
-        }
-      })
-
-    }
-  
-    const sigIn = (e) => {
-        e.preventDefault()
-        checkUser()
+        navigate(res === 1 ? '/home': '')
+        setShowErrors(true)
+    })
         
     }
 
     const register = async (e) => {
 
+        let userToCreate = { 'username': user.username, 'password': user.password }
+
         const idUser = await fetch("http://localhost:8080/api/v1/user/createUser", {
             method: "POST",   
-            body: JSON.stringify(user),
+            body: JSON.stringify(userToCreate),
             headers: {
           'Content-Type': 'application/json',
         },
       }).then(res => res.json())
 
       setUserRegister(idUser ? true: false)
+      if(idUser) {
+        console.log('usuario creado')
+      }
 
-        
     }
   
     return (
         <form className='login-form'>
             <h1>To doo</h1>
-            <input placeholder='username' onChange={e => setUsername(e.target.value)} required="yes"></input>
-            <input placeholder='password' onChange={e => setPassword(e.target.value)} required="yes"></input>
+            <input placeholder='username' onChange={getUsername} required="yes"></input>
+            <input placeholder='password' onChange={getPassword} required="yes"></input>
             {showErrors && <span className='error'>Usuario incorrecto</span>}
             <button type='submit' onClick={sigIn}>Sign in</button>
-            <button type='button'>Create user</button>
+            <button type='button' onClick={register}>Create user</button>
         </form> 
     )
 }
