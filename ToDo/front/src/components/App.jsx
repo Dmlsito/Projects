@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import  Login  from './Login.jsx'
 import  Home  from './home.jsx'
+import { usePath } from "../hooks/usePath.js"
 
 function App() {
 
@@ -10,23 +11,8 @@ function App() {
         window.dispatchEvent(navigationEvent)
     } 
 
-    const [currentPath, setCurrentPath] = useState(window.location.pathname)
-    
-    useEffect( () => {
-        //Para hacer esto se tiene que hacer de esta manera
+    const { currentPath } = usePath()
 
-        const onLocationChange = () => {
-            setCurrentPath(window.location.pathname)
-        }
-
-        window.addEventListener('pushstate', onLocationChange)
-
-        return () => {
-            window.removeEventListener('pushstate', onLocationChange)
-        }
-    },[])
-
-        
     return (
         <main>
             {currentPath === '/'  && <Login navigate={navigate}/>}
