@@ -1,5 +1,6 @@
 import './home.css'
 import { useState, useEffect, useRef} from 'react'
+import Menu from './Menu'
 
 const Home = () => {
 
@@ -19,11 +20,11 @@ const Home = () => {
 
     return (
 
-       <div className='provisional'>
-
-            <header>
-                <h1>To do</h1>
-            </header>
+       <div className='app'>
+        
+        <Menu />
+            
+            <h1 className='app-title'>Wellcome to TO DO</h1>
 
             <div className='main'>
 
@@ -36,7 +37,7 @@ const Home = () => {
                             <textarea ref={textAreaRef} />
                         </div>
 
-                        <button onClick={saveNote}>Save note</button> 
+                        <button onClick={saveNote}>Create note</button> 
                 </main>
 
                 <aside className='main-aside'>

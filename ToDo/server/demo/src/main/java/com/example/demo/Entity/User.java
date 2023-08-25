@@ -2,6 +2,8 @@ package com.example.demo.Entity;
 
 import jakarta.persistence. *;
 
+import java.util.List;
+
 @Entity(name = "users")
 public class User {
     @Id
@@ -12,6 +14,11 @@ public class User {
 
     @Column
     private String password;
+
+    //El fetch es un tipo de busqueda, en este caso es una busqueda vaga, puedes tener otros tipos de busqueda
+    // y algunos pueden pedir mayor o menor rendimiento
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    List<Note> listNote;
 
     public String getUsername() {
         return this.username;

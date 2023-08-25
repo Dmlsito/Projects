@@ -1,0 +1,51 @@
+.mainMenu {
+    width: 90%;
+    background-color: #d6f;
+    display: flex;
+    border-radius: 20px;
+    justify-content: center;
+    gap: 14rem;
+    height: 4.5rem;
+    margin-top: .6rem;
+}
+
+.mainMenu-containerItemList {
+    width: 60%;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}   
+
+.mainMenu-containerItemList-itemList {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    
+}
+.mainMenu-containerItemList-itemList button {
+    padding: .4rem;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    font-weight: bold;   
+}
+
+.mainMenu-containerItemList-itemList button:hover {
+    cursor: pointer;
+    scale: 1.1;
+}
+
+.mainMenu-containerProfile {
+    border: 2px solid red;
+    border-radius: 999px;
+    height: 80%;
+    align-self: center;
+    justify-self: start;
+}
+
+.mainMenu-containerProfile img {
+    border-radius: 99px;
+    height: 100%;
+    width: 100%;
+}

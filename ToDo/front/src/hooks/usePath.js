@@ -14,6 +14,8 @@ export const usePath = () => {
         window.addEventListener('pushstate', onLocationChange)
 
         //Limpiamos el evento
+        // El useEffect nos permite una funcion de retorno en la que podamos limpiar las subscripciones o las llamadas asincronas,
+        // cuando el componente se desmonta
         return () => {
             window.removeEventListener('pushstate', onLocationChange)
         }

@@ -5,12 +5,5 @@
 }
 
 body {
-    background-color: #17A078 ;  
+    background-color: #fff ;  
 }
-
-#root {
-    display: flex; 
-    align-items: center;  
-    justify-content: center;
-}
-
