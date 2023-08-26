@@ -13,6 +13,6 @@ public interface IUserService {
     Optional<List<User>> queryAllUsers();
     Optional<Integer>insertUser(User user);
     HashMap<String, String> convertUserToHashMap(User user);
-    Integer checkUser(User user);
+    Optional<?> checkUser(User user);
     Optional<String>deleteUser(Integer id);
 }

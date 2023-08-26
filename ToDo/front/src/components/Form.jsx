@@ -30,13 +30,13 @@ const Form = ({navigate}) => {
 
     }
   
-    const sigIn = async (e) => {
+    const sigIn = (e) => {
 
         e.preventDefault()
 
         let userToCheck = {'username': user.username, 'password': user.password}
         
-        const error =  fetch("http://localhost:8080/api/v1/user/checkUser", {
+        fetch("http://localhost:8080/api/v1/user/checkUser", {
             method: "POST",   
             body: JSON.stringify(userToCheck),
             headers: {
@@ -44,8 +44,13 @@ const Form = ({navigate}) => {
         },
       }).then(res => res.json())
       .then(res => {
-        navigate(res === 1 ? '/home': '')
+        navigate(res !== 0 ? '/home': '')
+        if(res) {
+            let userFinded = {'username': res.username, 'password': res.password, 'user_id': res.user_id}
+            localStorage.setItem("user", JSON.stringify(userFinded))
+        }else {
         setShowErrors(true)
+        }
     })
         
     }

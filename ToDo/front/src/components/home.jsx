@@ -16,6 +16,30 @@ const Home = () => {
         })
         setExistInfo(true)
 
+        insertNote()
+
+
+    }
+
+    console.log(JSON.parse(localStorage.getItem("user")).user_id)
+
+    const insertNote = () => {
+        let userSigned = JSON.parse(localStorage.getItem("user"))
+        let note = {'content': textAreaRef.current.value, 'user': {
+            'user_id': userSigned.user_id
+        } }
+        console.log(note)
+        fetch("http://localhost:8080/api/v1/note/createNote", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(note)
+        })
+        .then(res => res.json())
+        .then(res => {
+            console.log(res)
+        })
     }
 
     return (

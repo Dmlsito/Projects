@@ -67,18 +67,18 @@ public class UserServiceImp implements IUserService {
 
 
     @Override
-    public Integer checkUser(User userToCheck) {
+    public Optional<?> checkUser(User userToCheck) {
         System.out.println(userToCheck);
         List<User> listUsers = userDao.findAll();
         System.out.println(listUsers);
-        int error = 0;
+        User userFinded = null;
         for(User user: listUsers) {
             if(user.getPassword().equals(userToCheck.getPassword()) && user.getUsername().equals(userToCheck.getUsername())){
-                error = 1;
+                userFinded = userDao.getReferenceById(user.getUser_id());
                 System.out.println("Usuario encontrado");
                 break;
             }
         }
-        return error;
+        return userFinded == null ? Optional.of(0): Optional.of(userFinded);
     }
 }
