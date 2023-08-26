@@ -41,6 +41,13 @@ public class User {
         this.password = password;
     }
 
+    public List<Note> getListNotes() {
+        return this.listNote;
+    }
+    public void setListNote(List<Note>list) {
+        this.listNote = list;
+    }
+
     @Override
     public String toString() {
         return "User{" +

@@ -1,5 +1,6 @@
 package com.example.demo.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.Fetch;
 
@@ -12,6 +13,7 @@ public class Note {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_note;
 
+    @JsonIgnore
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
@@ -36,8 +38,12 @@ public class Note {
         this.user = user;
     }
 
-
-
-
-
+    @Override
+    public String toString() {
+        return "Note{" +
+                "content='" + content + '\'' +
+                ", id_note=" + id_note +
+                ", user=" + user +
+                '}';
+    }
 }

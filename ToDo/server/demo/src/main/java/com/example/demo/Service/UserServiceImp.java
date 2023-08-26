@@ -1,9 +1,10 @@
 package com.example.demo.Service;
 
 
+import com.example.demo.Entity.Note;
 import com.example.demo.Entity.User;
+import com.example.demo.Model.NoteDao;
 import com.example.demo.Model.UserDao;
-import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
@@ -12,12 +13,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+import static org.hibernate.type.SqlTypes.JSON;
+
 
 @Service("UserService")
 @Lazy
 public class UserServiceImp implements IUserService {
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private NoteDao noteDao;
 
     @Override
     public User queryUser(Integer id) {
@@ -56,8 +61,10 @@ public class UserServiceImp implements IUserService {
         HashMap<String, String> userJson = new HashMap<>();
         userJson.put("user_id", user.getUser_id().toString());
         userJson.put("username", user.getUsername());
+        userJson.put("password", user.getPassword());
         return userJson;
     }
+
 
     @Override
     public Integer checkUser(User userToCheck) {
@@ -71,7 +78,6 @@ public class UserServiceImp implements IUserService {
                 System.out.println("Usuario encontrado");
                 break;
             }
-
         }
         return error;
     }

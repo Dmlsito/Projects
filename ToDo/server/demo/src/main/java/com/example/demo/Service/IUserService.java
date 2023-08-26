@@ -1,6 +1,7 @@
 package com.example.demo.Service;
 
 import com.example.demo.Entity.User;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,8 +13,6 @@ public interface IUserService {
     Optional<List<User>> queryAllUsers();
     Optional<Integer>insertUser(User user);
     HashMap<String, String> convertUserToHashMap(User user);
-
     Integer checkUser(User user);
-
     Optional<String>deleteUser(Integer id);
 }

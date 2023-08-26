@@ -27,8 +27,8 @@ public class UserController {
 
     @CrossOrigin(origins = "http://localhost:5173")
     @GetMapping("/getUser/{id}")
-    public HashMap<String, String> queryUser(@PathVariable Integer id) {
-        return userService.convertUserToHashMap(userService.queryUser(id));
+    public ResponseEntity<?> queryUser(@PathVariable Integer id) {
+        return new ResponseEntity<>(userService.convertUserToHashMap(userService.queryUser(id)), HttpStatus.resolve(200));
     }
 
     @CrossOrigin(origins = "http://localhost:5173")
