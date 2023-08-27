@@ -9,27 +9,22 @@ const Home = () => {
 
     const textAreaRef = useRef(null)
 
-    const saveNote = () => {
+    // LO UTILIZAREMOS MAS ADELANTE
+    // const saveNote = () => {
         
-        setTextAreaInfo(info => {
-            return [...info, textAreaRef.current.value]
-        })
-        setExistInfo(true)
+    //     setTextAreaInfo(info => {
+    //         return [...info, textAreaRef.current.value]
+    //     })
+    //     setExistInfo(true)
 
-        insertNote()
+    //     insertNote()
 
+    // }
 
-    }
-
-    console.log(JSON.parse(localStorage.getItem("user")).user_id)
 
     const insertNote = () => {
-        let userSigned = JSON.parse(localStorage.getItem("user"))
-        let note = {'content': textAreaRef.current.value, 'user': {
-            'user_id': userSigned.user_id
-        } }
-        console.log(note)
-        fetch("http://localhost:8080/api/v1/note/createNote", {
+        let note = {'content': textAreaRef.current.value}
+        fetch(`http://localhost:8080/api/v1/note/createNote/${JSON.parse(localStorage.getItem('user')).user_id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,7 +34,7 @@ const Home = () => {
         .then(res => res.json())
         .then(res => {
             console.log(res)
-        })
+        })  
     }
 
     return (
@@ -61,7 +56,7 @@ const Home = () => {
                             <textarea ref={textAreaRef} />
                         </div>
 
-                        <button onClick={saveNote}>Create note</button> 
+                        <button o nClick={insertNote}>Create note</button> 
                 </main>
 
                 <aside className='main-aside'>

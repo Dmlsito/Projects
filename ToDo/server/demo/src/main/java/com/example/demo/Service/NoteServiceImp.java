@@ -1,6 +1,7 @@
 package com.example.demo.Service;
 
 import com.example.demo.Entity.Note;
+import com.example.demo.Entity.User;
 import com.example.demo.Model.NoteDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +15,15 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class NoteServiceImp implements INoteService{
     @Autowired
     private NoteDao noteDao;
+
     @Override
-    public Optional<Integer> createNote(Note note) {
+    public Optional<Note> createNote(Note note, Integer user_id) {
+        User newUser = new User();
+        newUser.setUser_id(user_id);
+        note.setUser(newUser);
         noteDao.saveAndFlush(note);
-        return Optional.of(noteDao.getReferenceById(note.getId_note()).getId_note());
+        System.out.println(note.toString());
+        return Optional.of(noteDao.getReferenceById(note.getId_note()));
     }
 
     @Override
@@ -57,4 +63,5 @@ public class NoteServiceImp implements INoteService{
 
         return Optional.of(note);
     }
+
 }

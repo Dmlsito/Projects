@@ -3,6 +3,7 @@ import  Login  from './Login.jsx'
 import  Home  from './home.jsx'
 import { usePath } from "../hooks/usePath.js"
 import { navigate } from "../utils/navigations.js"
+import UserNotes from "./UserNotes.jsx"
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
         <main>
             {currentPath === '/'  && <Login navigate={navigate}/>}
             {currentPath === '/home'  && <Home />}
+            {currentPath === '/userNotes' && <UserNotes />}
         </main>
     )
 }

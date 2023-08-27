@@ -1,11 +1,13 @@
+import { navigate } from '../utils/navigations'
 import './Menu.css'
 
 function Menu() {
+    
     return (
         <main className='mainMenu'>
             <div className='mainMenu-containerItemList'>
                 <div className='mainMenu-containerItemList-itemList'>
-                    <button>Tus notas</button>
+                    <button onClick={() => navigate('/userNotes')}>Tus notas</button>
                     <button>Detalles perfil</button>
                     <button>??????</button>
                     <button>??????</button>

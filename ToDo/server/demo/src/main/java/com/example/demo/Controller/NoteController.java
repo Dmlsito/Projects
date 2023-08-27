@@ -28,13 +28,20 @@ public class NoteController{
         return new ResponseEntity<>(noteService.convertNoteToHashMap(noteService.queryNote(id)), HttpStatus.resolve(200));
     }
     @CrossOrigin(origins = "http://localhost:5173")
-    @PostMapping("/createNote")
-    public ResponseEntity<?> createNote(@RequestBody Note note) {
-        return new ResponseEntity<>(noteService.createNote(note), HttpStatus.resolve(200));
+    @PostMapping("/createNote/{user_id}")
+    public ResponseEntity<?> createNote(@RequestBody Note note, @PathVariable Integer user_id) {
+        return new ResponseEntity<>(noteService.createNote(note, user_id), HttpStatus.resolve(200));
     }
     @CrossOrigin(origins = "http://localhost:5173")
     @DeleteMapping("/deleteNote/{id}")
     public ResponseEntity<?> deleteNote(@PathVariable Integer id) {
         return new ResponseEntity<>(noteService.deleteNote(id), HttpStatus.resolve(200));
     }
+
+    @CrossOrigin(origins = "http://localhost:5173")
+    @GetMapping("getUserNote/{id}")
+    public ResponseEntity<?> userNote(@PathVariable Integer id) {
+        return new ResponseEntity<>(noteService.getUserNotes(id), HttpStatus.resolve(200));
+    }
+
 }

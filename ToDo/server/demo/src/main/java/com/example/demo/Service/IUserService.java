@@ -2,6 +2,7 @@ package com.example.demo.Service;
 
 import com.example.demo.Entity.User;
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,4 +16,5 @@ public interface IUserService {
     HashMap<String, String> convertUserToHashMap(User user);
     Optional<?> checkUser(User user);
     Optional<String>deleteUser(Integer id);
+
 }
