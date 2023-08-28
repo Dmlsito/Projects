@@ -6,7 +6,7 @@ const Login = ({navigate}) => {
 
   return(
     <main className='login'>
-      <Form navigate={navigate}/>
+      <Form />
     </main>
   )
 } 

@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import { EVENTS } from '../utils/const'
 
 export const usePath = () => {
 
@@ -11,13 +12,17 @@ export const usePath = () => {
             setCurrentPath(window.location.pathname)
         }
 
-        window.addEventListener('pushstate', onLocationChange)
+        //Escuchando la navegacion hacia delante
+        window.addEventListener(EVENTS.PUSHSTATE, onLocationChange)
+        //Escuchando la navegacion hacia atras
+        window.addEventListener(EVENTS.POPSTATE, onLocationChange)
 
         //Limpiamos el evento
         // El useEffect nos permite una funcion de retorno en la que podamos limpiar las subscripciones o las llamadas asincronas,
         // cuando el componente se desmonta
         return () => {
-            window.removeEventListener('pushstate', onLocationChange)
+            window.removeEventListener(EVENTS.PUSHSTATE, onLocationChange)
+            window.addEventListener(EVENTS.POPSTATE, onLocationChange)
         }
     },[])
 

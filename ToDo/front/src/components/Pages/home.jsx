@@ -38,11 +38,9 @@ const Home = () => {
     }
 
     return (
-
+ 
        <div className='app'>
-        
-        <Menu />
-            
+            <Menu />
             <h1 className='app-title'>Wellcome to TO DO</h1>
 
             <div className='main'>
@@ -56,7 +54,7 @@ const Home = () => {
                             <textarea ref={textAreaRef} />
                         </div>
 
-                        <button o nClick={insertNote}>Create note</button> 
+                        <button onClick={insertNote}>Create note</button> 
                 </main>
 
                 <aside className='main-aside'>

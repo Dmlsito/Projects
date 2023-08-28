@@ -1,7 +1,8 @@
 import './Login.css'
 import { useRef, useState } from 'react'
+import { navigate } from '../../utils/navigations'
 
-const Form = ({navigate}) => {
+const Form = () => {
  
     const [user, setUser] = useState({username: '', password: ''})
     const [errorLogin, setErrorLogin] = useState(null)
@@ -9,31 +10,25 @@ const Form = ({navigate}) => {
     const [userRegister, setUserRegister] = useState(null)
     
     const getUsername = (e) => {
-
         setUser( info => {
             return {
                 username: e.target.value,
                 password: info.password
             }
         })
-
     }
 
     const getPassword = (e) => {
-
         setUser( info => {
             return {
                 username: info.username,
                 password: e.target.value
             }
         })
-
     }
   
     const sigIn = (e) => {
-
         e.preventDefault()
-
         let userToCheck = {'username': user.username, 'password': user.password}
         
         fetch("http://localhost:8080/api/v1/user/checkUser", {
@@ -68,9 +63,6 @@ const Form = ({navigate}) => {
       }).then(res => res.json())
 
       setUserRegister(idUser ? true: false)
-      if(idUser) {
-        console.log('usuario creado')
-      }
 
     }
   

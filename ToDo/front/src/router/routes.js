@@ -1,15 +1,25 @@
-import { createBrowserRouter } from 'react-router-dom'
-import Home from '../components/home'
-import Login from '../components/Login'
+import Login from '../components/Pages/Login'
+import Home from '../components/Pages/Home'
+import UserNotes from '../components/Pages/UserNotes'
+import Profile from '../components/Pages/Profile'
 
-export const router2 = createBrowserRouter([
+export const routes = [
     {
-        path : "/",
-        element: <Login />
+        path: '/',
+        component: Login    
     },
     {
-        path : "/home",
-        element: <Home />
+        path: '/home',
+        component: Home
+    },
+    {
+        path: '/userNotes',
+        component: UserNotes
+    },
 
+    {
+        path: '/profile',
+        component: Profile
     }
-])
+
+]

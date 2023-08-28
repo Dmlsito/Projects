@@ -16,7 +16,6 @@ public class NoteController{
 
     @Autowired
     private INoteService noteService;
-
     @CrossOrigin(origins = "http://localhost:5173")
     @GetMapping("/getAll")
     public ResponseEntity<?> getAllNotes() {
@@ -38,10 +37,10 @@ public class NoteController{
         return new ResponseEntity<>(noteService.deleteNote(id), HttpStatus.resolve(200));
     }
 
-    @CrossOrigin(origins = "http://localhost:5173")
-    @GetMapping("getUserNote/{id}")
-    public ResponseEntity<?> userNote(@PathVariable Integer id) {
-        return new ResponseEntity<>(noteService.getUserNotes(id), HttpStatus.resolve(200));
-    }
+//    @CrossOrigin(origins = "http://localhost:5173")
+//    @GetMapping("getUserNote/{id}")
+//    public ResponseEntity<?> userNote(@PathVariable Integer id) {
+//        return new ResponseEntity<>(noteService.getUserNotes(id), HttpStatus.resolve(200));
+//    }
 
 }

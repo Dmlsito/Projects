@@ -1,14 +1,15 @@
-import { navigate } from '../utils/navigations'
+import { navigate } from '../../utils/navigations'
+import { Link } from '../Link'
 import './Menu.css'
 
-function Menu() {
+function Menu({children}) {
     
     return (
         <main className='mainMenu'>
             <div className='mainMenu-containerItemList'>
                 <div className='mainMenu-containerItemList-itemList'>
-                    <button onClick={() => navigate('/userNotes')}>Tus notas</button>
-                    <button>Detalles perfil</button>
+                    <Link to={'/userNotes'}>Tus notas</Link>
+                    <Link to={'/profile'}>Detalles perfil</Link>
                     <button>??????</button>
                     <button>??????</button>
                 </div>
