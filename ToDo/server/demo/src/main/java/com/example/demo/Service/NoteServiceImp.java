@@ -21,8 +21,7 @@ public class NoteServiceImp implements INoteService{
         User newUser = new User();
         newUser.setUser_id(user_id);
         note.setUser(newUser);
-        noteDao.saveAndFlush(note);
-        System.out.println(note.toString());
+        noteDao.save(note);
         return Optional.of(noteDao.getReferenceById(note.getId_note()));
     }
 
@@ -62,6 +61,12 @@ public class NoteServiceImp implements INoteService{
         note.put("user", noteToConvert.getUser().toString());
 
         return Optional.of(note);
+    }
+
+    @Override
+    public Optional<List<Note>> getUserNotes(Integer user_id) {
+        List<Note> listOfNotes = noteDao.getUserNotes(user_id);
+        return Optional.of(listOfNotes);
     }
 
 }

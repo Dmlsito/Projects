@@ -16,8 +16,7 @@ public interface INoteService  {
      Optional<List<Note>> getAllNotes();
      Optional<HashMap<String, String>> convertNoteToHashMap(Note noteToConvert);
 
-//     @Query(value = "SELECT * FROM NOTES WHERE USER_ID = :user_id", nativeQuery = true)
-//     Optional<List<Note>> getUserNotes(Integer user_id);
+     Optional<List<Note>> getUserNotes(Integer user_id);
 
 
 

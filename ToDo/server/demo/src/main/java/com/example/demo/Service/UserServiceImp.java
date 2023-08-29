@@ -21,8 +21,6 @@ import static org.hibernate.type.SqlTypes.JSON;
 public class UserServiceImp implements IUserService {
     @Autowired
     private UserDao userDao;
-    @Autowired
-    private NoteDao noteDao;
 
     @Override
     public User queryUser(Integer id) {
