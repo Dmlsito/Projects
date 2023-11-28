@@ -35,7 +35,7 @@
     overflow: overlay;
 }
 .cart::-webkit-scrollbar{
-    display: none; /*por defecto le indicamos que la barra no se muestre*/
+    display: f /*por defecto le indicamos que la barra no se muestre*/
   
 }
 .main-cart-button * {

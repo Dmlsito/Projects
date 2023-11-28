@@ -2,7 +2,7 @@ import { navigate } from '../../utils/navigations'
 import { Link } from '../Link'
 import './Menu.css'
 
-function Menu({children}) {
+function Menu() {
     
     return (
         <main className='mainMenu'>

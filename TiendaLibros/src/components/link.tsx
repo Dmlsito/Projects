@@ -1,7 +1,8 @@
-import { navigate } from "../utils/navigations"
+import { navigate } from "../utils"
 
-export function Link({target, to, ...props}) {
-    
+
+const Link = ({target, to, ...props}) => {
+
     const handleClick = (event) => {
         const isMainEvent = event.button === 0 // El 0 significa que es el evento principal
         const isModifiedEvent = event.metaKey || event.altKey || event.ctrlKey || event.shiftKey
@@ -20,6 +21,7 @@ export function Link({target, to, ...props}) {
         <a onClick={handleClick} href={to} target ={target} {...props}></a>
     )
 
-    //NO SE PUEDEN UTILIZAR BOTONES PARA HACER UNA NAVEGACION
-
 }
+
+
+export default Link

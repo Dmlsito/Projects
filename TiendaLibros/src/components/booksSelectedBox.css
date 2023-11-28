@@ -1,0 +1,96 @@
+.box {
+   color: black;
+   width: 20rem;
+   overflow: overlay;  
+   position: fixed;
+   display: block;
+   right: 0;
+   height: 100%;
+   top: 0;  
+   border-left: 2px solid #34495E;
+}
+.box::-webkit-scrollbar {
+    display: none;
+}
+
+.box-title {
+    color: #FFCDD2;
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    gap: .5rem;
+    align-items: center;
+    text-align: center;
+    padding: .4rem;
+    margin-top: .5rem;
+    border-bottom: 2px solid #FFCDD2;
+}
+
+.fixed {
+    position: fixed;
+    display: block;
+    right: 0;
+    height: 100%;
+    top: 0;  
+} 
+
+.box-title-icon:hover {
+    scale: 1.1;
+    cursor: pointer
+}
+.box-content {
+    display: none;  
+}
+.box-content-appeared {
+    padding: .5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+}
+.box-content img {
+    width: 150px;
+    height: 150px;
+}
+.box-content-container {
+    padding:.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px ;
+    list-style: none;
+    width: 14rem;
+    gap: .4rem;
+}
+
+.box-content-container-buttonContainers {
+    width: 100%;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-content-container-button {
+    font-weight: 900;
+    transition: .5s;
+    border: none;
+    color: #34495E;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: .3rem;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+} 
+.box-content-container-button:hover {
+    scale: 1.1;
+    color: #CD6155;
+
+} 

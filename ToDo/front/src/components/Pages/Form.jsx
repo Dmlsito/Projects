@@ -75,7 +75,7 @@ const Form = () => {
             <button type='submit' onClick={sigIn}>Sign in</button>
             <button type='button' onClick={register}>Create user</button>
         </form> 
-    )
+    )   
 }
 
 export default Form

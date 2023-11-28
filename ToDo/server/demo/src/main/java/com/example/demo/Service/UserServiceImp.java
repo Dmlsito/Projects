@@ -1,10 +1,8 @@
 package com.example.demo.Service;
 
 
-import com.example.demo.Entity.Note;
 import com.example.demo.Entity.User;
-import com.example.demo.Model.NoteDao;
-import com.example.demo.Model.UserDao;
+import com.example.demo.Repository.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
@@ -12,8 +10,6 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
-
-import static org.hibernate.type.SqlTypes.JSON;
 
 
 @Service("UserService")

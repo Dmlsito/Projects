@@ -1,0 +1,17 @@
+.app {
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-filters {
+    padding-left: .6rem;
+    align-self: start;
+}
+
+.app h1 {
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+}
